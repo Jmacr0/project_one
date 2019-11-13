@@ -2,4 +2,4 @@
 
 This is the repo for project one :)
 
-* Andrew, Mike, Hiru, Jon *
+*-Andrew, Mike, Hiru, Jon*
