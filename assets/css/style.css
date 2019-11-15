@@ -116,7 +116,7 @@
               position: absolute;
               width: 100%;
               border-top: 1px solid #eee;
-              background-color: #808080\9;
+              background-color: 8080809;
               z-index: 100;
           }
       
@@ -148,4 +148,11 @@
               overflow: hidden;
           }
       
+      }
+      #searchInput{
+          background-color: grey;
+          height: 200px;
+          width: 200px;
+          padding: 20px;
+          
       }
