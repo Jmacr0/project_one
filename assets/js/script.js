@@ -8,7 +8,7 @@
 
 
 
-$("#homeBtn").on("click", function () {
+$("#submitBtn").on("click", function () {
 
     var books = input("");
     // Constructing a URL to search Giphy for the name of the person who said the quote
