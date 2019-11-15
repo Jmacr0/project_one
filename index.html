@@ -5,29 +5,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
-        integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>ReadMe</title>
 </head>
 
 <body>
-    <div class="custom-menu-wrapper">
-        <div class="pure-menu custom-menu custom-menu-top">
-            <a href="#" class="pure-menu-heading custom-menu-brand">ReadMe</a>
-            <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
-        </div>
-        <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked"
-            id="tuckedMenu">
-            <div class="custom-menu-screen"></div>
-            <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Contact</a></li>
-            </ul>
+
+    <div class="level">
+        <div class="level-item has-text-centered">ReadMe</div>
+    </div>
+
+
+    <div class="container has-text-centered" id="main">
+        <div class="columns ">
+            <div class="column is-three-fifths is-offset-one-fifth" id="searchMenu">
+                <div class="pure-u-1">
+                    <h1>Find a Book 📙</h1>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-info is-rounded" type="text" placeholder="Search By Title">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-info is-rounded" type="text" placeholder="Search By Author">
+                    </div>
+                </div>
+                <p>Genre</p>
+                <div class="field">
+                    <div class="control has-text-centered">
+                        <div class="select is-info">
+                            <select>
+                                <option>Fiction</option>
+                                <option>Non-Fiction</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <input class="button is-info is-medium" type="submit" id="submitBtn">
+
+            </div>
         </div>
     </div>
 
+
+    <div class="container" id="display-books">
+        <!-- displays results here -->
+
+
+
+        <div class="tile is-ancestor is-gapless">
+            <div class="tile is-parent is-3">
+                <div class="tile is-child card">
+                    <div class="card-image">
+                        <figure class="image is-4by3"><img src="https://bulma.io/images/placeholders/1280x960.png"
+                                alt=""></figure>
+                    </div>
+                    <div class="card-content">
+                        <h3>Title of Book</h3>
+                    </div>
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate tempore nesciunt saepe
+                        sapiente veniam beatae enim sed ullam suscipit ea quaerat, esse tenetur eius laboriosam.
+                        Exercitationem, nostrum reiciendis! Ratione, animi?
+                    </div>
+                </div>
+            </div>
+            <div class="tile is-parent is-3">
+                <div class="tile is-child card">
+                    <div class="card-image">
+                        <figure class="image is-4by3"><img src="https://bulma.io/images/placeholders/1280x960.png"
+                                alt=""></figure>
+                    </div>
+                    <div class="card-content">
+                        <h3>Title of Book</h3>
+                    </div>
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate tempore nesciunt saepe
+                        sapiente veniam beatae enim sed ullam suscipit ea quaerat, esse tenetur eius laboriosam.
+                        Exercitationem, nostrum reiciendis! Ratione, animi?
+                    </div>
+                </div>
+            </div>
+            <div class="tile is-parent is-3">
+                <div class="tile is-child card">
+                    <div class="card-image">
+                        <figure class="image is-4by3"><img src="https://bulma.io/images/placeholders/1280x960.png"
+                                alt=""></figure>
+                    </div>
+                    <div class="card-content">
+                        <h3>Title of Book</h3>
+                    </div>
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate tempore nesciunt saepe
+                        sapiente veniam beatae enim sed ullam suscipit ea quaerat, esse tenetur eius laboriosam.
+                        Exercitationem, nostrum reiciendis! Ratione, animi?
+                    </div>
+                </div>
+            </div>
+            <div class="tile is-parent is-3">
+                <div class="tile is-child card">
+                    <div class="card-image">
+                        <figure class="image is-4by3"><img src="https://bulma.io/images/placeholders/1280x960.png"
+                                alt=""></figure>
+                    </div>
+                    <div class="card-content">
+                        <h3>Title of Book</h3>
+                    </div>
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate tempore nesciunt saepe
+                        sapiente veniam beatae enim sed ullam suscipit ea quaerat, esse tenetur eius laboriosam.
+                        Exercitationem, nostrum reiciendis! Ratione, animi?
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 
