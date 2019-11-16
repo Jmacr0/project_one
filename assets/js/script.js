@@ -2,9 +2,6 @@ var submitBtn = $('#submitBtn');
 var main = $('#main');
 var displayBooks = $('#display-books');
 
-
-submitBtn.on('click', search); 
-
 function search() {
     var title = $("#title").val()
     var author = $("#author").val();
@@ -76,8 +73,11 @@ function search() {
     // }
 
 
-});
+};
 
 
+function test(){
+    event.preventDefault();
+    main.hide()
 
-
+}
