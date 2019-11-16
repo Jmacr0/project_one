@@ -11,6 +11,7 @@ const displayBooks = $('#display-books');
 submitBtn.on('click', search);
 
 function search() {
+  
     event.preventDefault();
 
     var title = $("#title").val();
