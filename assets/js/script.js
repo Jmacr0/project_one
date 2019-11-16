@@ -13,12 +13,13 @@ submitBtn.on('click', search);
 function search() {
     event.preventDefault();
 
-    var title = $("#title").val()
+    var title = $("#title").val();
     var author = $("#author").val();
+    var subject = $('select').val();
     var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" +
-        (title || author) + "&key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok";
-
-console.log(queryURL)
+        (title || author) + "&subject:" + + "&key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok";
+    console.log(subject)
+    console.log(queryURL)
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -39,11 +40,11 @@ console.log(queryURL)
             cloneBook.find(".book-content").text(response.items[i].volumeInfo.description);
             cloneBook.find(".book-content").attr("style", "height: 150px; overflow: scroll; padding: 0.5em;");
 
-            if(i > 3){
+            if (i > 3) {
                 ancestor2.append(cloneBook);
             } else {
-            ancestor.append(cloneBook);
-        }
+                ancestor.append(cloneBook);
+            }
             // const parent = $('<div>', { class: 'tile is-parent is-3' });
             // const child = $('<div>', { class: 'title is-child card' });
             // const cardImage = $('<div>', { class: 'card-image' });
