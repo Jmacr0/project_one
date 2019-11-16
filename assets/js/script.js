@@ -1,19 +1,11 @@
-(function (window, document) {
-    document.getElementById('toggle').addEventListener('click', function (e) {
-        document.getElementById('tuckedMenu').classList.toggle('custom-menu-tucked');
-        document.getElementById('toggle').classList.toggle('x');
-    });
-})(this, this.document);
-
-
-
 
 $("#submitBtn").on("click", function () {
 
-    var books = input("");
+    var title = $("#title").val();
+    var author = $("#author").val();
     // Constructing a URL to search Giphy for the name of the person who said the quote
     var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" +
-        books + "&key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok";
+        title + author + "&key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok";
 
     console.log(queryURL)
 
@@ -26,22 +18,24 @@ $("#submitBtn").on("click", function () {
 
         console.log(response);
 
-        var result = response.response.docs;
+        var result = response.items[0].volumeInfo;
+        console.log(result);
+
         console.log(result);
         for (var i = 0; i < result.length; i++) {
 
-            var title = $("<p>").text(result[i].headline.main);
-            var image = $("<img>").text(result[i].image);
-            var author = $("<p>").text(result[i].author);
-            var summary = $("<p>").text(result[i].summary);
+            var title = $("<p>").text(result[i].volumeInfo.title);
+            var image = $("<img>").text(result[i].volumeInfo.imageLinks);
+            var author = $("<p>").text(result[i].volumeInfo.authors);
+            var summary = $("<p>").text(result[i].volumeInfo.description);
 
-            $(textarea).append(title);
-            $(".searchResults").append(img);
-            $(".searchResults").append(author);
-            console.log(title);
+    //         $(textarea).append(title);
+    //         $(".searchResults").append(img);
+    //         $(".searchResults").append(author);
+    //         console.log(title);
         }
 
-    })
+    });
 
     // Storing an array of results in the results variable
     // var results = response.data;
