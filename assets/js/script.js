@@ -18,7 +18,7 @@ function search() {
         method: "GET"
     }).then(function (response) {// After the data comes back from the API {
 
-               
+
         for (var i = 0; i < 5; i++) {
 
             var title = $("<p>").text(response.items[i].volumeInfo.title);
@@ -27,14 +27,14 @@ function search() {
             var summary = $("<p>").text(response.items[i].volumeInfo.description);
 
 
-            $("#display-books").append(title, image, author,summary);
+            $("#display-books").append(title, image, author, summary);
             // console.log(title, image, author, summary)
 
 
-    //         $(textarea).append(title);
-    //         $(".searchResults").append(img);
-    //         $(".searchResults").append(author);
-    //         console.log(title);
+            //         $(textarea).append(title);
+            //         $(".searchResults").append(img);
+            //         $(".searchResults").append(author);
+            //         console.log(title);
         }
 
     });
@@ -76,7 +76,7 @@ function search() {
 };
 
 
-function test(){
+function test() {
     event.preventDefault();
     main.hide()
 

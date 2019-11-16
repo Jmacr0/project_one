@@ -26,21 +26,21 @@
 
                 <div class="field">
                     <div class="control">
-                        <input class="input is-info is-rounded" type="text" placeholder="Search By Title">
+                        <input class="input is-info is-rounded" id="title" type="text" placeholder="Search By Title">
                     </div>
                 </div>
                 <div class="field">
                     <div class="control">
-                        <input class="input is-info is-rounded" type="text" placeholder="Search By Author">
+                        <input class="input is-info is-rounded" id="author" type="text" placeholder="Search By Author">
                     </div>
                 </div>
-                <p>Genre</p>
+                <p class="genre">Genre</p>
                 <div class="field">
                     <div class="control has-text-centered">
                         <div class="select is-info">
                             <select>
-                                <option>Fiction</option>
-                                <option>Non-Fiction</option>
+                                <option value="fiction">Fiction</option>
+                                <option value="nonfiction">Non-Fiction</option>
                             </select>
                         </div>
                     </div>
@@ -49,84 +49,36 @@
                 <input class="button is-info is-medium" type="submit" id="submitBtn">
 
             </div>
+            <div class="column is-three-fifths is-offset-one-fifth">
+                <p id="time"></p>
+            </div>
         </div>
     </div>
 
+    <div class="tile is-parent is-3" id="book-to-clone">
+        <div class="tile is-child card">
+            <div class="card-image">
+                <figure class="image is-3by4"><img class="book-image" src="" alt=""></figure>
+            </div>
+            <div class="card-content">
+                <h3 class="book-title" style="font-weight: bold;"></h3>
+                <p class="book-author"></p>
+            </div>
+            <div class="content">
+                <div class="book-content"></div>
+            </div>
+        </div>
+    </div>
 
     <div class="container" id="display-books">
         <!-- displays results here -->
-
-
-
-        <div class="tile is-ancestor is-gapless">
-            <div class="tile is-parent is-3">
-                <div class="tile is-child card">
-                    <div class="card-image">
-                        <figure class="image is-4by3"><img src="https://bulma.io/images/placeholders/1280x960.png"
-                                alt=""></figure>
-                    </div>
-                    <div class="card-content">
-                        <h3>Title of Book</h3>
-                    </div>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate tempore nesciunt saepe
-                        sapiente veniam beatae enim sed ullam suscipit ea quaerat, esse tenetur eius laboriosam.
-                        Exercitationem, nostrum reiciendis! Ratione, animi?
-                    </div>
-                </div>
-            </div>
-            <div class="tile is-parent is-3">
-                <div class="tile is-child card">
-                    <div class="card-image">
-                        <figure class="image is-4by3"><img src="https://bulma.io/images/placeholders/1280x960.png"
-                                alt=""></figure>
-                    </div>
-                    <div class="card-content">
-                        <h3>Title of Book</h3>
-                    </div>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate tempore nesciunt saepe
-                        sapiente veniam beatae enim sed ullam suscipit ea quaerat, esse tenetur eius laboriosam.
-                        Exercitationem, nostrum reiciendis! Ratione, animi?
-                    </div>
-                </div>
-            </div>
-            <div class="tile is-parent is-3">
-                <div class="tile is-child card">
-                    <div class="card-image">
-                        <figure class="image is-4by3"><img src="https://bulma.io/images/placeholders/1280x960.png"
-                                alt=""></figure>
-                    </div>
-                    <div class="card-content">
-                        <h3>Title of Book</h3>
-                    </div>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate tempore nesciunt saepe
-                        sapiente veniam beatae enim sed ullam suscipit ea quaerat, esse tenetur eius laboriosam.
-                        Exercitationem, nostrum reiciendis! Ratione, animi?
-                    </div>
-                </div>
-            </div>
-            <div class="tile is-parent is-3">
-                <div class="tile is-child card">
-                    <div class="card-image">
-                        <figure class="image is-4by3"><img src="https://bulma.io/images/placeholders/1280x960.png"
-                                alt=""></figure>
-                    </div>
-                    <div class="card-content">
-                        <h3>Title of Book</h3>
-                    </div>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate tempore nesciunt saepe
-                        sapiente veniam beatae enim sed ullam suscipit ea quaerat, esse tenetur eius laboriosam.
-                        Exercitationem, nostrum reiciendis! Ratione, animi?
-                    </div>
-                </div>
-            </div>
+        <div class="tile is-ancestor is-gapless">           
+            
         </div>
 
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 
