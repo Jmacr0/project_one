@@ -19,7 +19,7 @@ function search() {
     }).then(function (response) {// After the data comes back from the API {
 
                
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 4; i++) {
 
             var title = $("<p>").text(response.items[i].volumeInfo.title);
             var image = $("<img>").text(response.items[i].volumeInfo.imageLinks);
