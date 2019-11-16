@@ -16,18 +16,18 @@ $("#submitBtn").on("click", function () {
         method: "GET"
     }).then(function (response) {// After the data comes back from the API {
 
-        console.log(response);
+               
+        for (var i = 0; i < 5; i++) {
 
-        var result = response.items[0].volumeInfo;
-        console.log(result);
+            var title = $("<p>").text(response.items[i].volumeInfo.title);
+            var image = $("<img>").text(response.items[i].volumeInfo.imageLinks);
+            var author = $("<p>").text(response.items[i].volumeInfo.authors);
+            var summary = $("<p>").text(response.items[i].volumeInfo.description);
 
-        console.log(result);
-        for (var i = 0; i < result.length; i++) {
 
-            var title = $("<p>").text(result[i].volumeInfo.title);
-            var image = $("<img>").text(result[i].volumeInfo.imageLinks);
-            var author = $("<p>").text(result[i].volumeInfo.authors);
-            var summary = $("<p>").text(result[i].volumeInfo.description);
+            $("#display-books").append(title, image, author,summary);
+            // console.log(title, image, author, summary)
+
 
     //         $(textarea).append(title);
     //         $(".searchResults").append(img);
