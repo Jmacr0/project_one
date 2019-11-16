@@ -1,83 +1,71 @@
-var submitBtn = $('#submitBtn');
-var main = $('#main');
-var displayBooks = $('#display-books');
+function updateTime() {
+    $('#time').text(moment().format("dddd, MMMM Do h:mm:ss a"));
+};
+updateTime();
+setInterval(updateTime, 1000);
+
+const submitBtn = $('#submitBtn');
+const main = $('#main');
+const displayBooks = $('#display-books');
+
+submitBtn.on('click', search);
 
 function search() {
-    var title = $("#title").val()
+  
+    event.preventDefault();
+
+    var title = $("#title").val();
     var author = $("#author").val();
-    // Constructing a URL to search Giphy for the name of the person who said the quote
+    var subject = $('select').val();
     var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" +
-        title + author + "&key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok";
-
+        (title || author) + "&subject:" + + "&key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok";
+    console.log(subject)
     console.log(queryURL)
-
-
-    // Performing our AJAX GET request
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function (response) {// After the data comes back from the API {
+    }).then(function (response) {
 
-               
-        for (var i = 0; i < 5; i++) {
+        const ancestor = $('<div>', { class: 'tile is-ancestor is-gapless' });
+        const ancestor2 = $('<div>', { class: 'tile is-ancestor is-gapless' });
+        const baseBook = $("#book-to-clone");
 
-            var title = $("<p>").text(response.items[i].volumeInfo.title);
-            var image = $("<img>").text(response.items[i].volumeInfo.imageLinks);
-            var author = $("<p>").text(response.items[i].volumeInfo.authors);
-            var summary = $("<p>").text(response.items[i].volumeInfo.description);
+        for (var i = 0; i < 8; i++) {
+            const cloneBook = baseBook.clone();
 
+            cloneBook.removeAttr("id");
 
-            $("#display-books").append(title, image, author,summary);
-            // console.log(title, image, author, summary)
+            cloneBook.find(".book-image").attr("src", response.items[i].volumeInfo.imageLinks.thumbnail);
+            cloneBook.find(".book-title").text(response.items[i].volumeInfo.title);
+            cloneBook.find(".book-author").text(response.items[i].volumeInfo.authors);
+            cloneBook.find(".book-content").text(response.items[i].volumeInfo.description);
+            cloneBook.find(".book-content").attr("style", "height: 150px; overflow: scroll; padding: 0.5em;");
 
+            if (i > 3) {
+                ancestor2.append(cloneBook);
+            } else {
+                ancestor.append(cloneBook);
+            }
+            // const parent = $('<div>', { class: 'tile is-parent is-3' });
+            // const child = $('<div>', { class: 'title is-child card' });
+            // const cardImage = $('<div>', { class: 'card-image' });
+            // const figure = $('<figure>', { class: 'image is-4by3' });
+            // const image = $('<img>', { src: response.items[i].volumeInfo.imageLinks });
+            // const cardContent = $('<card-content>');
+            // const title = $('<h3>', { text: response.items[i].volumeInfo.title });
+            // const author = $('<p>', { text: response.items[i].volumeInfo.authors });
+            // const content = $('<div>', { text: response.items[i].volumeInfo.description });
 
-    //         $(textarea).append(title);
-    //         $(".searchResults").append(img);
-    //         $(".searchResults").append(author);
-    //         console.log(title);
+            // cardImage.append(figure);
+            // cardContent.append(title, author);
+            // child.append(cardImage, cardContent, content);
+            // parent.append(child);
+            // ancestor.append(parent)
+
         }
 
-    });
 
-    // Storing an array of results in the results variable
-    // var results = response.data;
-
-    // // Looping over every result item
-    // for (var i = 0; i < results.length; i++) {
-
-    //     // Only taking action if the photo has an appropriate rating
-    //     if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
-    //         // Creating a div for the gif
-    //         var gifDiv = $("<div>");
-
-    //         // Storing the result item's rating
-    //         var rating = results[i].rating;
-
-    //         // Creating a paragraph tag with the result item's rating
-    //         var p = $("<p>").text("Rating: " + rating);
-
-    //         // Creating an image tag
-    //         var bookImage = $("<img>");
-
-    //         // Giving the image tag an src attribute of a proprty pulled off the
-    //         // result item
-    //         bookImage.attr("src", results[i].images.fixed_height.url);
-
-    //         // Appending the paragraph and personImage we created to the "gifDiv" div we created
-    //         gifDiv.append(p);
-    //         gifDiv.append(personImage);
-
-    //         // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-    //         $("#gifs-appear-here").prepend(gifDiv);
-    //     }
-    // }
-
-
-};
-
-
-function test(){
-    event.preventDefault();
-    main.hide()
-
+        displayBooks.append(ancestor);
+        displayBooks.append(ancestor2);
+    })
 }

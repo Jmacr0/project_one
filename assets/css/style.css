@@ -1,4 +1,4 @@
-h1, p {
+h1, .genre {
     font-size: 2em;
     color: #1E152A;
     font-weight: bold;
@@ -18,4 +18,8 @@ h1, p {
     font-size: 2.5em;
     font-weight: bold;
     color: #1E152A;
+}
+
+#book-to-clone {
+    display: none;
 }
