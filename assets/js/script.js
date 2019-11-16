@@ -1,6 +1,11 @@
+var submitBtn = $('#submitBtn');
+var main = $('#main');
+var displayBooks = $('#display-books');
 
-$("#submitBtn").on("click", function () {
 
+submitBtn.on('click', search); 
+
+function search() {
     var title = $("#title").val();
     var author = $("#author").val();
     // Constructing a URL to search Giphy for the name of the person who said the quote
@@ -72,4 +77,7 @@ $("#submitBtn").on("click", function () {
 
 
 });
+
+
+
 
