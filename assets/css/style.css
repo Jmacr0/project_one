@@ -4,8 +4,22 @@ h1, .genre {
     font-weight: bold;
 }
 
-.level {
-    background-color: #ff7700;
+#time {
+    margin-top: 1em; 
+}
+
+#main {
+    margin-bottom: 2em;
+}
+
+#navbar {
+    background-image: linear-gradient(#f15a02, #ff7700);
+    margin-bottom: 2em;
+}
+
+.navbar-menu {
+    background-image: linear-gradient(#ff8800, #ff9900);
+    background-color: #ff9900;
 }
 
 #searchMenu {
