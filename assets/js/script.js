@@ -1,3 +1,15 @@
+$(document).ready(function () {
+
+    // Check for click events on the navbar burger icon
+    $(".navbar-burger").click(function () {
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+
+    });
+});
+
 function updateTime() {
     $('#time').text(moment().format("dddd, MMMM Do h:mm:ss a"));
 };
@@ -13,13 +25,29 @@ submitBtn.on('click', search);
 function search() {
   
     event.preventDefault();
-
+    $('.is-ancestor').empty();
+    var keyword = $('#keyword').val();
     var title = $("#title").val();
     var author = $("#author").val();
-    var subject = $('select').val();
-    var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" +
-        (title || author) + "&subject:" + + "&key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok";
-    console.log(subject)
+    var subject = $('#subject').val();
+    var queryURL = "https://www.googleapis.com/books/v1/volumes?key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok&q="
+
+    if (keyword) {
+        queryURL = `${queryURL}${keyword}`
+    }
+    if (title) {
+        queryURL = `${queryURL}+intitle:${title}`
+        console.log(queryURL)
+    };
+    if (author) {
+        queryURL = `${queryURL}+inauthor:${author}`
+        console.log(queryURL)
+    }
+    if (subject) {
+        queryURL = `${queryURL}+subject:${subject}`
+        console.log(queryURL)
+    }
+
     console.log(queryURL)
     $.ajax({
         url: queryURL,
@@ -46,22 +74,6 @@ function search() {
             } else {
                 ancestor.append(cloneBook);
             }
-            // const parent = $('<div>', { class: 'tile is-parent is-3' });
-            // const child = $('<div>', { class: 'title is-child card' });
-            // const cardImage = $('<div>', { class: 'card-image' });
-            // const figure = $('<figure>', { class: 'image is-4by3' });
-            // const image = $('<img>', { src: response.items[i].volumeInfo.imageLinks });
-            // const cardContent = $('<card-content>');
-            // const title = $('<h3>', { text: response.items[i].volumeInfo.title });
-            // const author = $('<p>', { text: response.items[i].volumeInfo.authors });
-            // const content = $('<div>', { text: response.items[i].volumeInfo.description });
-
-            // cardImage.append(figure);
-            // cardContent.append(title, author);
-            // child.append(cardImage, cardContent, content);
-            // parent.append(child);
-            // ancestor.append(parent)
-
         }
 
 
