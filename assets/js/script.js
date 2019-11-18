@@ -23,42 +23,45 @@ const displayBooks = $('#display-books');
 submitBtn.on('click', search);
 
 function search() {
-  
+
     event.preventDefault();
     $('.is-ancestor').empty();
     var keyword = $('#keyword').val();
     var title = $("#title").val();
     var author = $("#author").val();
     var subject = $('#subject').val();
-    var queryURL = "https://www.googleapis.com/books/v1/volumes?key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok&q="
+    var queryURL = "https://www.googleapis.com/books/v1/volumes?key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok&maxResults=40&q="
 
     if (keyword) {
-        queryURL = `${queryURL}${keyword}`
+        queryURL += keyword
     }
     if (title) {
-        queryURL = `${queryURL}+intitle:${title}`
-        console.log(queryURL)
+        queryURL += `+intitle:${title}`
     };
     if (author) {
-        queryURL = `${queryURL}+inauthor:${author}`
-        console.log(queryURL)
+        queryURL += `+inauthor:${author}`
     }
     if (subject) {
-        queryURL = `${queryURL}+subject:${subject}`
-        console.log(queryURL)
+        queryURL += `+subject:${subject}`
     }
 
-    console.log(queryURL)
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-
+        //store array to local storage so refresh will still have data
+        const categoriesArray = [];
         const ancestor = $('<div>', { class: 'tile is-ancestor is-gapless' });
         const ancestor2 = $('<div>', { class: 'tile is-ancestor is-gapless' });
         const baseBook = $("#book-to-clone");
 
-        for (var i = 0; i < 8; i++) {
+        for (let i = 0; i < 8; i++) {
+
+            let category = response.items[i].volumeInfo.categories.toString();
+            if (!categoriesArray.includes(category)) {
+                $('#subject').append($('<option>', { value: category, text: category }));
+                categoriesArray.push(category);
+            }
             const cloneBook = baseBook.clone();
 
             cloneBook.removeAttr("id");
@@ -75,8 +78,6 @@ function search() {
                 ancestor.append(cloneBook);
             }
         }
-
-
         displayBooks.append(ancestor);
         displayBooks.append(ancestor2);
     })
