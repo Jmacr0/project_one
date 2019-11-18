@@ -19,12 +19,15 @@ setInterval(updateTime, 1000);
 const submitBtn = $('#submitBtn');
 const main = $('#main');
 const displayBooks = $('#display-books');
+const randomBtn = $("#randomBtn");
 
 submitBtn.on('click', search);
+randomBtn.on('click',randomSearch);
 
 function search() {
-  
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
     $('.is-ancestor').empty();
     var keyword = $('#keyword').val();
     var title = $("#title").val();
@@ -33,11 +36,12 @@ function search() {
     var queryURL = "https://www.googleapis.com/books/v1/volumes?key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok&q="
 
     if (keyword) {
-        queryURL = `${queryURL}${keyword}`
+        // queryURL = `${queryURL}${keyword}`
+        queryURL += keyword;
     }
     if (title) {
-        queryURL = `${queryURL}+intitle:${title}`
-        console.log(queryURL)
+        queryURL = `${queryURL}+intitle:${title}`;
+        console.log(queryURL);
     };
     if (author) {
         queryURL = `${queryURL}+inauthor:${author}`
@@ -76,8 +80,34 @@ function search() {
             }
         }
 
-
         displayBooks.append(ancestor);
         displayBooks.append(ancestor2);
+    })
+} 
+
+
+
+function randomSearch() {
+
+    var random = $('#random').val();
+    var queryURL = "https://random-word-api.herokuapp.com/word?key=JKAP6XDP&number=1"
+
+    console.log(queryURL)
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+
+        console.log(response[0]);
+
+        $('#keyword').val("");
+        $('#title').val("");
+        $('#author').val("");
+        // var random = $('#keyword').val();
+
+        $('#keyword').val(response[0]);
+        search();  
+        
+        
     })
 }
