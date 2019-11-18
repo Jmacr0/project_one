@@ -19,11 +19,15 @@ setInterval(updateTime, 1000);
 const submitBtn = $('#submitBtn');
 const main = $('#main');
 const displayBooks = $('#display-books');
+const randomBtn = $("#randomBtn");
 
 submitBtn.on('click', search);
+randomBtn.on('click',randomSearch);
 
 function search() {
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
     $('.is-ancestor').empty();
     var keyword = $('#keyword').val();
     var title = $("#title").val();
@@ -81,7 +85,7 @@ function search() {
     })
 } 
 
-randomSearch();
+
 
 function randomSearch() {
 
@@ -94,10 +98,15 @@ function randomSearch() {
         method: "GET"
     }).then(function (response) {
 
-        console.log(response);
+        console.log(response[0]);
 
-        $('#keyword').empty();
-        var random = $('#keyword').val();  
+        $('#keyword').val("");
+        $('#title').val("");
+        $('#author').val("");
+        // var random = $('#keyword').val();
+
+        $('#keyword').val(response[0]);
+        search();  
         
         
     })
