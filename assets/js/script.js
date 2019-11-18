@@ -23,7 +23,6 @@ const displayBooks = $('#display-books');
 submitBtn.on('click', search);
 
 function search() {
-
     event.preventDefault();
     $('.is-ancestor').empty();
     var keyword = $('#keyword').val();
@@ -48,6 +47,7 @@ function search() {
         queryURL = `${queryURL}+subject:${subject}`
         console.log(queryURL)
     }
+
     console.log(queryURL)
     $.ajax({
         url: queryURL,
@@ -74,7 +74,10 @@ function search() {
             } else {
                 ancestor.append(cloneBook);
             }
-        }  
+        }
+
+        displayBooks.append(ancestor);
+        displayBooks.append(ancestor2);
     })
 } 
 
@@ -99,34 +102,3 @@ function randomSearch() {
         
     })
 }
-
-
-    
-
-        // for (var i = 0; i < 8; i++) {
-        //     const cloneBook = baseBook.clone();
-
-        //     cloneBook.removeAttr("id");
-
-        //     cloneBook.find(".book-image").attr("src", response.items[i].volumeInfo.imageLinks.thumbnail);
-        //     cloneBook.find(".book-title").text(response.items[i].volumeInfo.title);
-        //     cloneBook.find(".book-author").text(response.items[i].volumeInfo.authors);
-        //     cloneBook.find(".book-content").text(response.items[i].volumeInfo.description);
-        //     cloneBook.find(".book-content").attr("style", "height: 150px; overflow: scroll; padding: 0.5em;");
-
-        //     if (i > 3) {
-        //         ancestor2.append(cloneBook);
-        //     } else {
-        //         ancestor.append(cloneBook);
-        //     }
-        // }
-
-
-
-
-
-//         displayBooks.append(ancestor);
-//         displayBooks.append(ancestor2);
-//    })
-// }
-        
