@@ -74,48 +74,59 @@ function search() {
             } else {
                 ancestor.append(cloneBook);
             }
-        }
+        }  
+    })
+} 
 
-        function randomsSearch() {
+randomSearch();
 
+function randomSearch() {
 
-            var random = $('#random').val();
-            var queryURL = "/word?key={JKAP6XDP}&number={number_of_words}"
+    var random = $('#random').val();
+    var queryURL = "https://random-word-api.herokuapp.com/word?key=JKAP6XDP&number=1"
 
-            console.log(queryURL)
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
+    console.log(queryURL)
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
 
-              
+        console.log(response);
 
-                // for (var i = 0; i < 8; i++) {
-                //     const cloneBook = baseBook.clone();
-
-                //     cloneBook.removeAttr("id");
-
-                //     cloneBook.find(".book-image").attr("src", response.items[i].volumeInfo.imageLinks.thumbnail);
-                //     cloneBook.find(".book-title").text(response.items[i].volumeInfo.title);
-                //     cloneBook.find(".book-author").text(response.items[i].volumeInfo.authors);
-                //     cloneBook.find(".book-content").text(response.items[i].volumeInfo.description);
-                //     cloneBook.find(".book-content").attr("style", "height: 150px; overflow: scroll; padding: 0.5em;");
-
-                //     if (i > 3) {
-                //         ancestor2.append(cloneBook);
-                //     } else {
-                //         ancestor.append(cloneBook);
-                //     }
-                // }
+        $('#keyword').empty();
+        var random = $('#keyword').val();  
+        
+        
+    })
+}
 
 
+    
+
+        // for (var i = 0; i < 8; i++) {
+        //     const cloneBook = baseBook.clone();
+
+        //     cloneBook.removeAttr("id");
+
+        //     cloneBook.find(".book-image").attr("src", response.items[i].volumeInfo.imageLinks.thumbnail);
+        //     cloneBook.find(".book-title").text(response.items[i].volumeInfo.title);
+        //     cloneBook.find(".book-author").text(response.items[i].volumeInfo.authors);
+        //     cloneBook.find(".book-content").text(response.items[i].volumeInfo.description);
+        //     cloneBook.find(".book-content").attr("style", "height: 150px; overflow: scroll; padding: 0.5em;");
+
+        //     if (i > 3) {
+        //         ancestor2.append(cloneBook);
+        //     } else {
+        //         ancestor.append(cloneBook);
+        //     }
+        // }
 
 
 
-                displayBooks.append(ancestor);
-                displayBooks.append(ancestor2);
-           })
-        }
-    }
-)}           
+
+
+//         displayBooks.append(ancestor);
+//         displayBooks.append(ancestor2);
+//    })
+// }
         
