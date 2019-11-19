@@ -136,18 +136,18 @@ function paginate() {
 
 function randomSearch() {
 
-    var queryURL = "https://random-word-api.herokuapp.com/word?key=JKAP6XDP&number=1"
+    var queryURL = "https://random-word-api.herokuapp.com/word?key=MI93HSU0&number=1"
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-
+      
         $('#keyword').val("");
         $('#title').val("");
         $('#author').val("");
 
         $('#keyword').val(response[0]);
         search();
-
+        console.log(response)
     })
 }
