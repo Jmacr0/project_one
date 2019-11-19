@@ -72,8 +72,11 @@ function search() {
             const cloneBook = baseBook.clone();
 
             cloneBook.removeAttr("id");
-
-            cloneBook.find(".book-image").attr("src", response.items[i].volumeInfo.imageLinks.thumbnail);
+            if (response.items[i].volumeInfo.imageLinks) {
+                cloneBook.find(".book-image").attr("src", response.items[i].volumeInfo.imageLinks.thumbnail);
+            } else {
+                cloneBook.find(".book-image").attr("src", "https://via.placeholder.com/300x400");
+            }
             cloneBook.find(".book-title").text(response.items[i].volumeInfo.title);
             cloneBook.find(".book-author").text(response.items[i].volumeInfo.authors);
             cloneBook.find(".book-content").text(response.items[i].volumeInfo.description);
@@ -119,7 +122,7 @@ function paginate() {
             currentPage = 1;
             return;
         }
-        activePage.removeClass('is-current');        
+        activePage.removeClass('is-current');
         $(`a:contains(${currentPage})`).addClass('is-current');
         search();
     }
