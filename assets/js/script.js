@@ -24,11 +24,15 @@ pagination.hide();
 var currentPage = 1;
 var currentPageDisplay;
 var startingIncrement;
+const randomBtn = $("#randomBtn");
 
 submitBtn.on('click', search);
+randomBtn.on('click', randomSearch);
 
 function search() {
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
     $('.is-ancestor').empty();
     var keyword = $('#keyword').val();
     var title = $("#title").val();
@@ -126,4 +130,24 @@ function paginate() {
         $(`a:contains(${currentPage})`).addClass('is-current');
         search();
     }
+
+}
+
+
+function randomSearch() {
+
+    var queryURL = "https://random-word-api.herokuapp.com/word?key=JKAP6XDP&number=1"
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+
+        $('#keyword').val("");
+        $('#title').val("");
+        $('#author').val("");
+
+        $('#keyword').val(response[0]);
+        search();
+
+    })
 }
