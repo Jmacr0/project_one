@@ -19,11 +19,15 @@ setInterval(updateTime, 1000);
 const submitBtn = $('#submitBtn');
 const main = $('#main');
 const displayBooks = $('#display-books');
+const pagination = $('.pagination');
+pagination.hide();
+var currentPage = 1;
+var currentPageDisplay;
+var startingIncrement;
 
 submitBtn.on('click', search);
 
 function search() {
-
     event.preventDefault();
     $('.is-ancestor').empty();
     var keyword = $('#keyword').val();
@@ -55,9 +59,12 @@ function search() {
         const ancestor2 = $('<div>', { class: 'tile is-ancestor is-gapless' });
         const baseBook = $("#book-to-clone");
 
-        for (let i = 0; i < 8; i++) {
-
-            let category = response.items[i].volumeInfo.categories.toString();
+        currentPageDisplay = currentPage * 8;
+        startingIncrement = currentPageDisplay - 8;
+        for (let i = startingIncrement; i < currentPageDisplay; i++) {
+            if (response.items[i].volumeInfo.categories) {
+                var category = response.items[i].volumeInfo.categories.toString();
+            }
             if (!categoriesArray.includes(category)) {
                 $('#subject').append($('<option>', { value: category, text: category }));
                 categoriesArray.push(category);
@@ -72,13 +79,48 @@ function search() {
             cloneBook.find(".book-content").text(response.items[i].volumeInfo.description);
             cloneBook.find(".book-content").attr("style", "height: 150px; overflow: scroll; padding: 0.5em;");
 
-            if (i > 3) {
+            if (i > currentPageDisplay - 5) {
                 ancestor2.append(cloneBook);
             } else {
                 ancestor.append(cloneBook);
             }
         }
-        displayBooks.append(ancestor);
-        displayBooks.append(ancestor2);
+        displayBooks.append(ancestor).fadeIn('slow');
+        displayBooks.append(ancestor2).fadeIn('slow');
+        pagination.show();
     })
+}
+
+$('.pagination').on('click', paginate);
+
+function paginate() {
+    event.preventDefault();
+    let clickedItem = $(event.target);
+    let activePage = $('.is-current');
+    if (clickedItem.hasClass('is-current')) {
+        return;
+    } else if (clickedItem.hasClass('pagination-link')) {
+        activePage.removeClass('is-current');
+        clickedItem.addClass('is-current');
+        currentPage = parseInt(clickedItem.text());
+        search();
+    } else if (clickedItem.hasClass('pagination-next')) {
+        currentPage = parseInt($(this).find('.is-current').text()) + 1;
+        if (currentPage > 5) {
+            currentPage = 5
+            return;
+        }
+        activePage.removeClass('is-current');
+        $(`a:contains(${currentPage})`).addClass('is-current');
+        search();
+    } else if (clickedItem.hasClass('pagination-previous')) {
+        currentPage = parseInt($(this).find('.is-current').text()) - 1;
+        if (currentPage < 1) {
+            currentPage = 1;
+            return;
+        }
+        activePage.removeClass('is-current');        
+        $(`a:contains(${currentPage})`).addClass('is-current');
+        search();
+    }
 }
