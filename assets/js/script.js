@@ -36,6 +36,13 @@ var startingIncrement;
 pagination.hide();
 submitBtn.on('click', search);
 randomBtn.on('click', randomSearch);
+$("#keyword,#title,#author").keydown(function (event) {
+    // 13 = enter
+    if (event.keyCode == 13) {
+        search();
+    }
+});
+
 
 function search() {
     if (event) {
