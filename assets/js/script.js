@@ -17,15 +17,23 @@ updateTime();
 setInterval(updateTime, 1000);
 
 const submitBtn = $('#submitBtn');
+const randomBtn = $("#randomBtn");
 const main = $('#main');
 const displayBooks = $('#display-books');
 const pagination = $('.pagination');
-pagination.hide();
+let categoriesArray = [];
+const localStorageGenres = localStorage.getItem('genres');
+if (localStorageGenres !== null) {
+    categoriesArray = JSON.parse(localStorageGenres);
+    $.each(categoriesArray, function (i, val) {
+        $('#subject').append($('<option>', { value: val, text: val }));
+    })
+}
 var currentPage = 1;
 var currentPageDisplay;
 var startingIncrement;
-const randomBtn = $("#randomBtn");
 
+pagination.hide();
 submitBtn.on('click', search);
 randomBtn.on('click', randomSearch);
 
@@ -33,7 +41,7 @@ function search() {
     if (event) {
         event.preventDefault();
     }
-    $('.is-ancestor').empty();
+    $('#display-books').empty();
     var keyword = $('#keyword').val();
     var title = $("#title").val();
     var author = $("#author").val();
@@ -58,7 +66,7 @@ function search() {
         method: "GET"
     }).then(function (response) {
         //store array to local storage so refresh will still have data
-        const categoriesArray = [];
+
         const ancestor = $('<div>', { class: 'tile is-ancestor is-gapless' });
         const ancestor2 = $('<div>', { class: 'tile is-ancestor is-gapless' });
         const baseBook = $("#book-to-clone");
@@ -70,9 +78,13 @@ function search() {
                 var category = response.items[i].volumeInfo.categories.toString();
             }
             if (!categoriesArray.includes(category)) {
-                $('#subject').append($('<option>', { value: category, text: category }));
-                categoriesArray.push(category);
+                if (category !== undefined) {
+                    $('#subject').append($('<option>', { value: category, text: category }));
+                    categoriesArray.push(category);
+                }
             }
+            localStorage.setItem('genres', JSON.stringify(categoriesArray));
+
             const cloneBook = baseBook.clone();
 
             cloneBook.removeAttr("id");
@@ -141,13 +153,12 @@ function randomSearch() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-      
+
         $('#keyword').val("");
         $('#title').val("");
         $('#author').val("");
 
         $('#keyword').val(response[0]);
         search();
-        console.log(response)
     })
 }

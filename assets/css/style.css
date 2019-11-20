@@ -4,6 +4,10 @@ h1, .genre {
     font-weight: bold;
 }
 
+.card-content {
+    padding-bottom: 1em;
+}
+
 .genre {
     display: inline;  
 }
@@ -100,3 +104,13 @@ i {
     }
 }
 
+@media screen and (max-width: 768px){
+     .card-image {
+        padding: 1em;
+    }
+
+    .section, #main {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
