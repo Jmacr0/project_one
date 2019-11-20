@@ -74,6 +74,8 @@ The **ReadMe** Application includes a random feature which allows the user to se
 
 * To simplify our Javascript we used jQuery https://jquery.com
 
+* To use the random search button, we used a random word generator https://random-word-api.herokuapp.com/
+
 **CSS Framework**
 
 * To style the application we used Bulma https://bulma.io
