@@ -38,6 +38,9 @@ Once the user proceeds to search, **ReadMe** provides the following for each boo
 
 The books are displayed eight at a time, and is paginated to five pages. A total of 40 books per search. Upon executing a new search, the previous search results are cleared.
 
+![desktop view](https://github.com/Jmacr0/project_one/raw/master/assets/image/desktop.JPG "Logo Title Text 1")
+
+
 ## Instructions
 
 How to use the **ReadMe** Application:
