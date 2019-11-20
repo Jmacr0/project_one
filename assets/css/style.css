@@ -24,10 +24,6 @@ i {
     margin-top: 1em; 
 }
 
-#main {
-    padding-top: 0;
-}
-
 #navbar {
     background-image: linear-gradient(#f15a02, #ff7700);
     margin-bottom: 2em;
@@ -38,7 +34,11 @@ i {
     background-color: #ff9900;
 }
 
-#searchMenu {
+.main {
+    padding-top: 0;
+}
+
+.hero {
   background-color: #ff9900;  
   box-shadow: 1px 1px 10px 2px #888888;
 }
@@ -94,7 +94,12 @@ i {
     opacity: 1;
   }
 
+/* Contact Page */
 
+#contact-description {
+    margin: 1em;
+    margin-top: 2em;
+}
 
 /* Media Queries */
 

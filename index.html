@@ -16,7 +16,9 @@
 
     <nav class="navbar" role="navigation" aria-label="main navigation" id="navbar">
         <div class="navbar-brand">
-            <p class="navbar-item is-size-3 has-text-black-bis has-text-weight-bold">ReadMe</p>
+            <a href="./index.html">
+                <p class="navbar-item is-size-3 has-text-black-bis has-text-weight-bold">ReadMe</p>
+            </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
                 <span aria-hidden="true"></span>
@@ -26,18 +28,16 @@
         </div>
         <div class="navbar-menu">
             <div class="navbar-start">
-                <a href="" class="navbar-item has-text-weight-bold has-text-light is-size-4">about</a>
-                <a href="" class="navbar-item has-text-weight-bold has-text-light is-size-4">contact</a>
+                <a href="./about.html" class="navbar-item has-text-weight-bold has-text-light is-size-4">about</a>
+                <a href="./contact.html" class="navbar-item has-text-weight-bold has-text-light is-size-4">contact</a>
             </div>
         </div>
     </nav>
 
-    <section class="section has-text-centered" id="main">
+    <section class="section has-text-centered main">
         <div class="columns ">
-            <div class="column is-three-fifths is-offset-one-fifth" id="searchMenu">
-                <div class="pure-u-1">
-                    <h1>Find a Book 📙</h1>
-                </div>
+            <div class="column is-three-fifths is-offset-one-fifth hero">
+                <h1>Find a Book 📙</h1>
                 <div class="field">
                     <div class="control">
                         <input class="input is-info is-rounded" id="keyword" type="text"
@@ -83,53 +83,39 @@
                 </div>
                 <p id="time" class="has-text-weight-bold has-text-white"></p>
             </div>
-            <div class="column is-three-fifths is-offset-one-fifth">
-                <p id="time"></p>
+        </div>
+
+        <div class="tile is-parent is-3" id="book-to-clone">
+            <div class="tile is-child card">
+                <div class="card-image">
+                    <figure class="image is-3by4"><img class="book-image" src="" alt=""></figure>
+                </div>
+                <div class="card-content">
+                    <h3 class="book-title has-text-weight-bold"></h3>
+                    <p class="book-author"></p>
+                </div>
+                <div class="content">
+                    <div class="book-content"></div>
+                </div>
             </div>
+        </div>
+
+        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+            <a class="pagination-previous">Previous</a>
+            <a class="pagination-next">Next page</a>
+            <ul class="pagination-list">
+                <li><a class="pagination-link is-current" aria-label="Goto page 1" aria-current="page">1</a></li>
+                <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>
+                <li><a class="pagination-link" aria-label="Goto page 3">3</a></li>
+                <li><a class="pagination-link" aria-label="Goto page 4">4</a></li>
+                <li><a class="pagination-link" aria-label="Goto page 5">5</a></li>
+            </ul>
+        </nav>
+
+        <div class="container" id="display-books">
+            <!-- displays results here -->
         </div>
     </section>
-
-    <div class="tile is-parent is-3" id="book-to-clone">
-        <div class="tile is-child card">
-            <div class="card-image">
-                <figure class="image is-3by4"><img class="book-image" src="" alt=""></figure>
-            </div>
-            <div class="card-content">
-                <h3 class="book-title has-text-weight-bold"></h3>
-                <p class="book-author"></p>
-            </div>
-            <div class="content">
-                <div class="book-content"></div>
-            </div>
-        </div>
-    </div>
-
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <a class="pagination-previous">Previous</a>
-        <a class="pagination-next" >Next page</a>
-        <ul class="pagination-list">
-            <li><a class="pagination-link is-current" aria-label="Goto page 1" aria-current="page">1</a></li>
-            <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>
-            <li><a class="pagination-link" aria-label="Goto page 3">3</a></li>
-            <li><a class="pagination-link" aria-label="Goto page 4">4</a></li>
-            <li><a class="pagination-link" aria-label="Goto page 5">5</a></li>
-        </ul>
-    </nav>
-
-    <div class="container" id="display-books">
-        <!-- displays results here -->
-        <div class="tile is-ancestor is-gapless">
-
-        </div>
-    </div>
-
-    <div class="container" id="display-books">
-        <!-- displays results here -->
-        <div class="tile is-ancestor is-gapless">           
-            
-        </div>
-
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
