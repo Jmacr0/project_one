@@ -94,6 +94,12 @@ i {
     opacity: 1;
   }
 
+/* About Page */
+
+img {
+    width: 100%;
+}
+
 /* Contact Page */
 
 #contact-description {
@@ -114,8 +120,12 @@ i {
         padding: 1em;
     }
 
-    .section, #main {
+    .section, .main {
         padding-top: 0;
         padding-bottom: 0;
+    }
+
+    #mail-icon {
+        width: 60%
     }
 }
