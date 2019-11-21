@@ -118,6 +118,7 @@ function search() {
             } else {
                 cloneBook.find(".book-image").attr("src", "https://via.placeholder.com/300x400");
             }
+             
             cloneBook.find(".book-title").text(response.items[i].volumeInfo.title);
             cloneBook.find(".book-author").text(response.items[i].volumeInfo.authors);
             cloneBook.find(".book-content").text(response.items[i].volumeInfo.description);
