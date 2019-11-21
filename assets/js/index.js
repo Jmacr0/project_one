@@ -33,21 +33,32 @@ $("#keyword,#title,#author").keydown(function (event) {
 
 const FAVOURITE_KEY = 'favourite';
 
-$("#book-to-clone").click((function() {
-    const title = $(this).find(".book-title").text();
-    const imageSrc = $(this).find(".book-image").attr("src");
+$("#book-to-clone").click((function () {
+    event.preventDefault();
+    const target = $(event.target);
+    if (target.hasClass('far')) {
+        target.removeClass('far');
+        target.addClass('fas')
+        console.log('saving favourite');
 
-    const localStorageFavouriteArray = localStorage.getItem(FAVOURITE_KEY);
-    const favouriteArray = localStorageFavouriteArray ? JSON.parse(localStorageFavouriteArray) : [];
+        const title = $(this).find(".book-title").text();
+        const author = $(this).find(".book-author").text();
+        const imageSrc = $(this).find(".book-image").attr("src");
+        const plotSummary = $(this).find(".book-content").text();
+        const localStorageFavouriteArray = localStorage.getItem(FAVOURITE_KEY);
+        const favouriteArray = localStorageFavouriteArray ? JSON.parse(localStorageFavouriteArray) : [];
 
-    favouriteArray.push({
-        title,
-        imageSrc,
-    });
+        favouriteArray.push({
+            title,
+            author,
+            imageSrc,
+            plotSummary,
+        });
 
-    localStorage.setItem(FAVOURITE_KEY, JSON.stringify(favouriteArray));
+        localStorage.setItem(FAVOURITE_KEY, JSON.stringify(favouriteArray));
+    }
 
-    console.log('saving favourite');
+
 }));
 
 

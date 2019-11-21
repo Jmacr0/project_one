@@ -50,7 +50,7 @@ i {
     color: #1E152A;
 }
 
-#book-to-clone {
+#book-to-clone, #favourite-book-to-clone {
     display: none;
 }
 
@@ -94,11 +94,12 @@ i {
     opacity: 1;
   }
 
+/* Favourites Page */
+
+
 /* About Page */
 
-img {
-    width: 100%;
-}
+
 
 /* Contact Page */
 
