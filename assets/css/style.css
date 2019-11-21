@@ -50,7 +50,7 @@ i {
     color: #1E152A;
 }
 
-#book-to-clone {
+#book-to-clone, #favourite-book-to-clone {
     display: none;
 }
 
@@ -94,6 +94,13 @@ i {
     opacity: 1;
   }
 
+/* Favourites Page */
+
+
+/* About Page */
+
+
+
 /* Contact Page */
 
 #contact-description {
@@ -114,8 +121,12 @@ i {
         padding: 1em;
     }
 
-    .section, #main {
+    .section, .main {
         padding-top: 0;
         padding-bottom: 0;
+    }
+
+    #mail-icon {
+        width: 60%
     }
 }

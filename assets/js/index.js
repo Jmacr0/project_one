@@ -1,15 +1,3 @@
-$(document).ready(function () {
-
-    // Check for click events on the navbar burger icon
-    $(".navbar-burger").click(function () {
-
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        $(".navbar-burger").toggleClass("is-active");
-        $(".navbar-menu").toggleClass("is-active");
-
-    });
-});
-
 function updateTime() {
     $('#time').text(moment().format("dddd, MMMM Do h:mm:ss a"));
 };
@@ -45,21 +33,32 @@ $("#keyword,#title,#author").keydown(function (event) {
 
 const FAVOURITE_KEY = 'favourite';
 
-$("#book-to-clone").click((function() {
-    const title = $(this).find(".book-title").text();
-    const imageSrc = $(this).find(".book-image").attr("src");
+$("#book-to-clone").click((function () {
+    event.preventDefault();
+    const target = $(event.target);
+    if (target.hasClass('far')) {
+        target.removeClass('far');
+        target.addClass('fas')
+        console.log('saving favourite');
 
-    const localStorageFavouriteArray = localStorage.getItem(FAVOURITE_KEY);
-    const favouriteArray = localStorageFavouriteArray ? JSON.parse(localStorageFavouriteArray) : [];
+        const title = $(this).find(".book-title").text();
+        const author = $(this).find(".book-author").text();
+        const imageSrc = $(this).find(".book-image").attr("src");
+        const plotSummary = $(this).find(".book-content").text();
+        const localStorageFavouriteArray = localStorage.getItem(FAVOURITE_KEY);
+        const favouriteArray = localStorageFavouriteArray ? JSON.parse(localStorageFavouriteArray) : [];
 
-    favouriteArray.push({
-        title,
-        imageSrc,
-    });
+        favouriteArray.push({
+            title,
+            author,
+            imageSrc,
+            plotSummary,
+        });
 
-    localStorage.setItem(FAVOURITE_KEY, JSON.stringify(favouriteArray));
+        localStorage.setItem(FAVOURITE_KEY, JSON.stringify(favouriteArray));
+    }
 
-    console.log('saving favourite');
+
 }));
 
 
@@ -119,6 +118,7 @@ function search() {
             } else {
                 cloneBook.find(".book-image").attr("src", "https://via.placeholder.com/300x400");
             }
+             
             cloneBook.find(".book-title").text(response.items[i].volumeInfo.title);
             cloneBook.find(".book-author").text(response.items[i].volumeInfo.authors);
             cloneBook.find(".book-content").text(response.items[i].volumeInfo.description);

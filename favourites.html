@@ -9,6 +9,7 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/favourite.css">
     <title>Contact</title>
 </head>
 
@@ -40,17 +41,46 @@
         <div class="columns">
             <div class="column is-three-fifths is-offset-one-fifth hero">
                 <h1>Your Favourites 🌟</h1>
-                <p class="has-text-light">Here is a repository of your favourited books. Once they aren't your favourite, go ahead and delete the book.</p>
+                <p class="has-text-light has-text-weight-bold mb">Here is a repository of your favourited books. Once they
+                    aren't your favourite, go ahead and delete the book.</p>
+                <div class="columns">
+                    <div class="column is-10 is-offset-1">
+                        <div class="columns">
+                                <div class="column is-half"><img src="assets/image/bookmark.png" alt="bookmark-icon"
+                                    id="bookmark-icon">
+                            </div>
+                            <div class="column is-half"><span id="favourites-count"></span></div>
+                        </div>                        
+                    </div>
+                </div>
             </div>
         </div>
+
+
+        <div class="tile is-parent is-3" id="favourite-book-to-clone">
+            <div class="tile is-child card">
+                <div class="card-image">
+                    <figure class="image is-3by4"><img class="book-image" src="" alt=""></figure>
+                </div>
+                <div class="card-content">
+                    <h3 class="book-title has-text-weight-bold"></h3><i class="far fa-times-circle"
+                        id="cross-icon"></i></i>
+                    <p class="book-author"></p>
+                </div>
+                <div class="content">
+                    <div class="book-content"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="favourites-container" style="overflow: scroll; overflow-y: hidden;"></div>
+
     </section>
-    <div id="favourite-book-to-clone">
-        <img src="" alt="">
-        <div class="title"></div>
-    </div>
-    <div id="favourites-container"></div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="assets/js/script.js"></script>
     <script src="assets/js/favourite_script.js"></script>
 </body>
 
