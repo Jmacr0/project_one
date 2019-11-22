@@ -42,6 +42,7 @@ $("#book-to-clone").click((function () {
         console.log('saving favourite');
 
         const title = $(this).find(".book-title").text();
+        const subtitle = $(this).find(".book-subtitle").text();
         const author = $(this).find(".book-author").text();
         const imageSrc = $(this).find(".book-image").attr("src");
         const plotSummary = $(this).find(".book-content").text();
@@ -50,6 +51,7 @@ $("#book-to-clone").click((function () {
 
         favouriteArray.push({
             title,
+            subtitle,
             author,
             imageSrc,
             plotSummary,
@@ -97,7 +99,6 @@ function search() {
         const ancestor2 = $('<div>', { class: 'tile is-ancestor is-gapless' });
         const baseBook = $("#book-to-clone");
         var favouriteArray = JSON.parse(localStorage.getItem(FAVOURITE_KEY));
-        console.log(favouriteArray);
         currentPageDisplay = currentPage * 8;
         startingIncrement = currentPageDisplay - 8;
         for (let i = startingIncrement; i < currentPageDisplay; i++) {
