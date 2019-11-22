@@ -69,6 +69,7 @@ function search() {
     $('#display-books').empty();
     var keyword = $('#keyword').val();
     var title = $("#title").val();
+    var subtitle =$("subtitle").val();
     var author = $("#author").val();
     var subject = $('#subject').val();
     var queryURL = "https://www.googleapis.com/books/v1/volumes?key=AIzaSyCE7UNHs3V2amAd3v4vSFlCnY7_v-fx2ok&maxResults=40&q="
@@ -128,6 +129,7 @@ function search() {
             }
             
             cloneBook.find(".book-title").text(response.items[i].volumeInfo.title);
+            cloneBook.find(".book-subtitle").text(response.items[i].volumeInfo.subtitle);
             cloneBook.find(".book-author").text(response.items[i].volumeInfo.authors);
             cloneBook.find(".book-content").text(response.items[i].volumeInfo.description);
             cloneBook.find(".book-content").attr("style", "height: 150px; overflow: scroll; padding: 0.5em;");
@@ -189,7 +191,7 @@ function randomSearch() {
     }).then(function (response) {
 
         $('#keyword').val("");
-        $('#title').val("");
+        $('#title').val("");        
         $('#author').val("");
 
         $('#keyword').val(response[0]);
