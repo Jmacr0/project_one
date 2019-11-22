@@ -185,7 +185,7 @@ function paginate() {
 
 function randomSearch() {
 
-    var queryURL = "https://random-word-api.herokuapp.com/word?key=MI93HSU0&number=1"
+    var queryURL = "https://random-word-api.herokuapp.com/word?key=9WVVO257&number=1"
     $.ajax({
         url: queryURL,
         method: "GET"
