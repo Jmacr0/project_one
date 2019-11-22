@@ -37,6 +37,7 @@ function refreshFavourites() {
             clonedFavourite.removeAttr('id');
             clonedFavourite.find("img").attr("src", favourite.imageSrc);
             clonedFavourite.find(".book-title").text(favourite.title);
+            clonedFavourite.find(".book-subtitle").text(favourite.subtitle);
             clonedFavourite.find(".book-author").text(favourite.author);
             clonedFavourite.find(".book-content").text(favourite.plotSummary);
             clonedFavourite.find(".book-content").attr("style", "height: 150px; overflow: scroll; padding: 0.5em;")
