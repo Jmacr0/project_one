@@ -98,7 +98,7 @@ function search() {
         const ancestor = $('<div>', { class: 'tile is-ancestor is-gapless' });
         const ancestor2 = $('<div>', { class: 'tile is-ancestor is-gapless' });
         const baseBook = $("#book-to-clone");
-        var favouriteArray = JSON.parse(localStorage.getItem(FAVOURITE_KEY));
+        var favouriteArray = JSON.parse(localStorage.getItem(FAVOURITE_KEY) || "[]");
         currentPageDisplay = currentPage * 8;
         startingIncrement = currentPageDisplay - 8;
         for (let i = startingIncrement; i < currentPageDisplay; i++) {
