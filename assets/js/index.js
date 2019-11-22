@@ -95,7 +95,8 @@ function search() {
         const ancestor = $('<div>', { class: 'tile is-ancestor is-gapless' });
         const ancestor2 = $('<div>', { class: 'tile is-ancestor is-gapless' });
         const baseBook = $("#book-to-clone");
-
+        var favouriteArray = JSON.parse(localStorage.getItem(FAVOURITE_KEY));
+        console.log(favouriteArray);
         currentPageDisplay = currentPage * 8;
         startingIncrement = currentPageDisplay - 8;
         for (let i = startingIncrement; i < currentPageDisplay; i++) {
@@ -118,7 +119,14 @@ function search() {
             } else {
                 cloneBook.find(".book-image").attr("src", "https://via.placeholder.com/300x400");
             }
-             
+            var responseTitle = response.items[i].volumeInfo.title;
+            for (let i = 0; i < favouriteArray.length; i++) {
+        
+                if (favouriteArray[i].title === responseTitle){
+                    cloneBook.find(".heart-icon").removeClass("far").addClass("fas");                    
+                }
+            }
+            
             cloneBook.find(".book-title").text(response.items[i].volumeInfo.title);
             cloneBook.find(".book-author").text(response.items[i].volumeInfo.authors);
             cloneBook.find(".book-content").text(response.items[i].volumeInfo.description);
