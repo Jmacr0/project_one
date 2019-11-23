@@ -68,6 +68,7 @@ function search() {
     if (event) {
         event.preventDefault();
     }
+    $('.loader').show();
     $('#display-books').empty();
     var keyword = $('#keyword').val();
     var title = $("#title").val();
@@ -141,6 +142,7 @@ function search() {
                 ancestor.append(cloneBook);
             }
         }
+        $('.loader').hide();
         displayBooks.append(ancestor).fadeIn('slow');
         displayBooks.append(ancestor2).fadeIn('slow');
         pagination.show();
